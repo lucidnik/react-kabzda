@@ -1,46 +1,65 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Accordion} from "./Components/Accordion/Accordion";
-import {Rating} from "./Components/Rating/Rating";
-import {OnOff} from "./Components/OnOff/OnOff";
+import {Rating, RatingValueType} from "./Components/Rating/Rating";
+import {OnOffUncontrolled} from "./Components/OnOff/OnOffUncontrolled";
 import {AccordionUncontrolled} from "./Components/Accordion/AccordionUncontrolled";
 import {RatingUncontrolled} from "./Components/Rating/RatingUncontrolled";
+import {OnOff} from "./Components/OnOff/OnOff";
 
 type PageTitlePropsType = {
     title: string
 }
 
+
 function App() {
+
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(0);
+    let [accordionCollapsed, setAccordionCollapsed] = useState(true);
+    let [on, setOn] = useState(true);
+
+
+    const accordionToggle = () => {
+        accordionCollapsed ? setAccordionCollapsed(false) : setAccordionCollapsed(true);
+    };
+
+    const onToggle = () => {
+        on ? setOn(false) : setOn(true);
+    };
+
     return (
-        <div className={"App"} >
+        <div className={"App"}>
 
-            <OnOff />
-            <OnOff  />
-            <OnOff  />
+            <Accordion title={'Test'} collapsed={accordionCollapsed}
+                       setAccordionCollapsed={accordionToggle}/>
 
-            <AccordionUncontrolled title={'SOP'} />
-            <AccordionUncontrolled title={'WUZ GUD'} />
+            <OnOff on={on} onToggle={onToggle}/>
 
-            <RatingUncontrolled />
+            {/*<OnOffUncontrolled/>
+            <OnOffUncontrolled/>
+            <OnOffUncontrolled/>
 
-           {/* <PageTitle title={'This is app title'}/>
+            <AccordionUncontrolled title={'SOP'}/>
+            <AccordionUncontrolled title={'WUZ GUD'}/>
+
+            <RatingUncontrolled/>
+
+            <Rating value={ratingValue} onClick={setRatingValue}/>*/}
+
+
+            {/* <PageTitle title={'This is app title'}/>
             <PageTitle title={'LOOOL'}/>
             Article 1
             <Rating value={3}/>
             <Accordion title={'Test'} collapsed={true} />
             <Accordion title={'lel'} collapsed={false} />
             Article 2
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
             <div>
             </div>*/}
         </div>
     );
 }
+
 
 function PageTitle(props: PageTitlePropsType) {
     return (
