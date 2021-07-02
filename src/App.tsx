@@ -3,6 +3,8 @@ import './App.css';
 import {Accordion} from "./Components/Accordion/Accordion";
 import {Rating} from "./Components/Rating/Rating";
 import {OnOff} from "./Components/OnOff/OnOff";
+import {AccordionUncontrolled} from "./Components/Accordion/AccordionUncontrolled";
+import {RatingUncontrolled} from "./Components/Rating/RatingUncontrolled";
 
 type PageTitlePropsType = {
     title: string
@@ -10,8 +12,18 @@ type PageTitlePropsType = {
 
 function App() {
     return (
-        <div>
-            <PageTitle title={'This is app title'}/>
+        <div className={"App"} >
+
+            <OnOff />
+            <OnOff  />
+            <OnOff  />
+
+            <AccordionUncontrolled title={'SOP'} />
+            <AccordionUncontrolled title={'WUZ GUD'} />
+
+            <RatingUncontrolled />
+
+           {/* <PageTitle title={'This is app title'}/>
             <PageTitle title={'LOOOL'}/>
             Article 1
             <Rating value={3}/>
@@ -25,9 +37,7 @@ function App() {
             <Rating value={4}/>
             <Rating value={5}/>
             <div>
-                <OnOff on={true} />
-                <OnOff on={false} />
-            </div>
+            </div>*/}
         </div>
     );
 }

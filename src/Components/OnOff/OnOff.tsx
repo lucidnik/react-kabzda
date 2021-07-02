@@ -1,31 +1,57 @@
-import React from "react";
-import s from './OnOff.module.css';
+import React, {useState} from "react";
 
 type PropsType = {
-    on: boolean
 }
+
 
 export function OnOff(props: PropsType) {
 
+    let [on, setOn] = useState(true)
+
+    const turnOn = () => {
+        setOn(true)
+    }
+
+    const turnOff = () => {
+        setOn(false)
+    }
+
     const onStyle = {
+        width: "30px",
+        height: "20px",
+        border: "1px solid black",
+        display: "inline-block",
+        padding: "2px",
+        backgroundColor: on ? "green" : "white"
+    };
 
-    }
-    const oFfStyle = {
+    const offStyle = {
+        width: "30px",
+        height: "20px",
+        border: "1px solid black",
+        display: "inline-block",
+        marginLeft: "2px",
+        padding: "2px",
+        backgroundColor: on ? "white" : "red"
 
-    }
-    const indicatorStyle = {}
 
-    return <div>
-        {props.on && <div>
-            <span className={s.on}>ON </span>
-            <span>OFF</span>
-            <span className={s.circleGreen}> </span>
+    };
 
-        </div>}
-        {!props.on && <div>
-            <span>ON</span>
-            <span className={s.off} >OFF</span>
-            <span className={s.circleRed}> </span>
-        </div> }
-    </div>;
+    const indicatorStyle = {
+        width: "10px",
+        height: "10px",
+        borderRadius: "5px",
+        border: "1px solid black ",
+        display: "inline-block",
+        marginLeft: "5px",
+        backgroundColor: on ? "green" : "red"
+    };
+
+    return (
+        <div>
+            <div onClick={turnOn} style={onStyle}>On</div>
+            <div onClick={turnOff} style={offStyle}>Off</div>
+            <div style={indicatorStyle}></div>
+        </div>
+    );
 }
