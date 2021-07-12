@@ -6,6 +6,8 @@ import {OnOffUncontrolled} from "./Components/OnOff/OnOffUncontrolled";
 import {AccordionUncontrolled} from "./Components/Accordion/AccordionUncontrolled";
 import {RatingUncontrolled} from "./Components/Rating/RatingUncontrolled";
 import {OnOff} from "./Components/OnOff/OnOff";
+import {Select} from "@material-ui/core";
+import SimpleSelect from "./Components/SimpleSelect";
 
 type PageTitlePropsType = {
     title: string
@@ -18,6 +20,11 @@ function App() {
     let [accordionCollapsed, setAccordionCollapsed] = useState(true);
     let [on, setOn] = useState(true);
 
+    let entertainment = [
+        {title: 'js', value: '1'},
+        {title: 'React', value: '2'},
+        {title: 'CSS', value: '3'}
+    ];
 
     const accordionToggle = () => {
         accordionCollapsed ? setAccordionCollapsed(false) : setAccordionCollapsed(true);
@@ -27,13 +34,23 @@ function App() {
         on ? setOn(false) : setOn(true);
     };
 
+    const onclick = (value: any) => {
+        console.log(value)
+    }
+
+    let [age, setAge] = useState('1')
+
     return (
         <div className={"App"}>
 
-            <Accordion title={'Test'} collapsed={accordionCollapsed}
-                       setAccordionCollapsed={accordionToggle}/>
+            <SimpleSelect />
 
-            <OnOff on={on} onToggle={onToggle}/>
+            {/*<Accordion title={'Test'} collapsed={accordionCollapsed}*/}
+            {/*           setAccordionCollapsed={accordionToggle} items={entertainment} onClick={onclick} />*/}
+
+
+
+            {/*<OnOff on={on} onToggle={onToggle}/>*/}
 
             {/*<OnOffUncontrolled/>
             <OnOffUncontrolled/>
